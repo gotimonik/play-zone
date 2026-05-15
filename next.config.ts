@@ -2,18 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "thezgame.com",
-        pathname: "/static/media/**"
-      },
-      {
-        protocol: "https",
-        hostname: "thezgame.com",
-        pathname: "/Games/**"
-      }
-    ]
+    unoptimized: true,
   },
   experimental: {
     optimizePackageImports: []
