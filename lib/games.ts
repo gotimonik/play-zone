@@ -33,7 +33,7 @@ export const categoryPaths: Record<GameCategory, string> = {
   Racing: "/RacingGames",
   Puzzle: "/PuzzleGames",
   Multiplayer: "/MultiplayerGames",
-  Strategy: "/StrategyGames"
+  Strategy: "/StrategyGames",
 };
 
 const gameSeeds: Record<GameCategory, GameSeed[]> = {
@@ -50,7 +50,7 @@ const gameSeeds: Record<GameCategory, GameSeed[]> = {
     { title: "Space Jet", path: "/SpaceJet" },
     { title: "Swift", path: "/Swift" },
     { title: "Wizard Magic Fire", path: "/WizardMagicFire" },
-    { title: "Wobbly Boxing", path: "/Boxing" }
+    { title: "Wobbly Boxing", path: "/Boxing" },
   ],
   Adventure: [
     { title: "Duo Nether", path: "/DuoNether" },
@@ -77,7 +77,7 @@ const gameSeeds: Record<GameCategory, GameSeed[]> = {
     { title: "SuperHeroRope", path: "/SuperHeroRope" },
     { title: "The Black", path: "/TheBlack" },
     { title: "Tiny Crash Fighters", path: "/TinyCrashFighters" },
-    { title: "Warrior Kingdom", path: "/WarriorKingdom" }
+    { title: "Warrior Kingdom", path: "/WarriorKingdom" },
   ],
   Arcade: [
     { title: "Alien Slither Snake", path: "/AlienSlitherSnake" },
@@ -128,7 +128,7 @@ const gameSeeds: Record<GameCategory, GameSeed[]> = {
     { title: "Two Supra Drifters", path: "/TwoSupraDrifters" },
     { title: "Vehicle Parking Master 3D", path: "/VehicleParkingMaster3D" },
     { title: "War Nations.io", path: "/WarNationsio" },
-    { title: "Zombie City Polygon Survival", path: "/ZombieCityPolygonSurvival" }
+    { title: "Zombie City Polygon Survival", path: "/ZombieCityPolygonSurvival" },
   ],
   Racing: [
     { title: "Asphalt Legend", path: "/AsphaltLegend" },
@@ -162,7 +162,7 @@ const gameSeeds: Record<GameCategory, GameSeed[]> = {
     { title: "Tank Arena Steel Battle", path: "/TankArenaSteelBattle" },
     { title: "Traffic Parking", path: "/TrafficParking" },
     { title: "Truck Simulator Arcade Championship", path: "/TruckSimulatorArcadeChampionship" },
-    { title: "Zombie Driver", path: "/ZombieDriver" }
+    { title: "Zombie Driver", path: "/ZombieDriver" },
   ],
   Puzzle: [
     { title: "100 Doors Escape Mysteries", path: "/100DoorsEscapeMysteries" },
@@ -211,7 +211,7 @@ const gameSeeds: Record<GameCategory, GameSeed[]> = {
     { title: "Traffic Jam Hop On", path: "/TrafficJamHopOn" },
     { title: "Tricky Arrow 2", path: "/TrickyArrow2" },
     { title: "TrollHead to Face", path: "/TrollHeadtoFace" },
-    { title: "Water Sort", path: "/WaterSort" }
+    { title: "Water Sort", path: "/WaterSort" },
   ],
   Multiplayer: [
     { title: "2 Player Mini Challenge", path: "/2PlayerMiniChallenge" },
@@ -235,7 +235,7 @@ const gameSeeds: Record<GameCategory, GameSeed[]> = {
     { title: "Table Tennis Open", path: "/TableTennisOpen" },
     { title: "Tic Tac Toe Multiplayer", path: "/TicTacToeMultiplayer" },
     { title: "Volleyball Challenge", path: "/VolleyballChallenge" },
-    { title: "World Cricket Champ", path: "/WorldCricketChamp" }
+    { title: "World Cricket Champ", path: "/WorldCricketChamp" },
   ],
   Strategy: [
     { title: "Age of War", path: "/AgeofWar" },
@@ -246,8 +246,8 @@ const gameSeeds: Record<GameCategory, GameSeed[]> = {
     { title: "Merge Master Army Clash", path: "/MergeMasterArmyClash" },
     { title: "Stickman Team Return", path: "/StickmanTeamReturn" },
     { title: "Tower Defense", path: "/TowerDefense" },
-    { title: "Zombie Siege Outbreak", path: "/ZombieSiegeOutbreak" }
-  ]
+    { title: "Zombie Siege Outbreak", path: "/ZombieSiegeOutbreak" },
+  ],
 };
 
 const extractedIframePaths: Record<string, string> = {
@@ -269,14 +269,17 @@ const iframeUrl = (path: string) => {
   const iframePath = extractedIframePaths[path];
   return iframePath ? iframePath : null;
 };
-const categoryTheme: Record<GameCategory, { from: string; via: string; to: string; accent: string }> = {
+const categoryTheme: Record<
+  GameCategory,
+  { from: string; via: string; to: string; accent: string }
+> = {
   Action: { from: "#1d1238", via: "#6d1a45", to: "#ef4444", accent: "#67e8f9" },
   Adventure: { from: "#052e2b", via: "#0f766e", to: "#84cc16", accent: "#fde68a" },
   Arcade: { from: "#111827", via: "#7c3aed", to: "#ec4899", accent: "#7dd3fc" },
   Racing: { from: "#0f172a", via: "#334155", to: "#f97316", accent: "#fef08a" },
   Puzzle: { from: "#172554", via: "#2563eb", to: "#14b8a6", accent: "#f9a8d4" },
   Multiplayer: { from: "#312e81", via: "#4f46e5", to: "#06b6d4", accent: "#bef264" },
-  Strategy: { from: "#1f2937", via: "#57534e", to: "#d97706", accent: "#c4b5fd" }
+  Strategy: { from: "#1f2937", via: "#57534e", to: "#d97706", accent: "#c4b5fd" },
 };
 
 export function slugify(value: string) {
@@ -298,7 +301,7 @@ function tagsFor(title: string, category: GameCategory) {
       .split(/\s+/)
       .map((word) => slugify(word))
       .filter((word) => word.length > 2)
-      .slice(0, 3)
+      .slice(0, 3),
   ];
 }
 
@@ -338,20 +341,34 @@ function thumbnailFor(title: string, category: GameCategory) {
   return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 }
 
+const availableGameImages: Record<string, string> = {
+  "/ArcherBattle": "/images/archer-battle.png",
+  "/Arrows": "/images/arrows.png",
+  "/Chidimar": "/images/chidimar.png",
+  "/CrazyCannons": "/images/crazy-cannons.png",
+  "/Deadshot": "/images/deadshot.png",
+  "/NightScary": "/images/night-scary.png",
+  "/NinjaTime": "/images/ninja-time.png",
+  "/RocketDefender": "/images/rocket-defender.png",
+  "/SpaceJet": "/images/space-jet.png",
+  "/Swift": "/images/swift.png",
+  "/WizardMagicFire": "/images/wizard-magic-fire.png",
+  "/Boxing": "/images/boxing.png",
+};
 export const games: Game[] = Object.entries(gameSeeds).flatMap(([category, seeds], categoryIndex) =>
   seeds.map((seed, index) => ({
     title: seed.title,
     slug: slugify(seed.title),
     sourcePath: seed.path,
     description: descriptionFor(seed.title, category as GameCategory),
-    thumbnail: thumbnailFor(seed.title, category as GameCategory),
+    thumbnail: availableGameImages[seed.path] || thumbnailFor(seed.title, category as GameCategory),
     category: category as GameCategory,
     iframe_url: iframeUrl(seed.path),
     tags: tagsFor(seed.title, category as GameCategory),
     rating: Number((4.9 - ((index + categoryIndex) % 7) * 0.1).toFixed(1)),
     featured: index < 2,
-    trending: index < 4
-  }))
+    trending: index < 4,
+  })),
 );
 
 export const categories = Object.keys(gameSeeds) as GameCategory[];
@@ -367,7 +384,9 @@ export function getGameBySourcePath(path: string) {
 
 export function getCategoryBySourcePath(path: string) {
   const normalized = path.startsWith("/") ? path : `/${path}`;
-  return categories.find((category) => categoryPaths[category].toLowerCase() === normalized.toLowerCase());
+  return categories.find(
+    (category) => categoryPaths[category].toLowerCase() === normalized.toLowerCase(),
+  );
 }
 
 export function getGamesByCategory(categorySlug: string) {
@@ -379,8 +398,8 @@ export function searchGames(query: string) {
   if (!term) return games;
   return games.filter((game) =>
     [game.title, game.description, game.category, game.sourcePath, ...game.tags].some((value) =>
-      value.toLowerCase().includes(term)
-    )
+      value.toLowerCase().includes(term),
+    ),
   );
 }
 
