@@ -1,0 +1,17 @@
+{
+  "name": "Nexus Play",
+  "short_name": "Nexus",
+  "description": "Premium browser games with instant play and fast discovery.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#060711",
+  "theme_color": "#060711",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
