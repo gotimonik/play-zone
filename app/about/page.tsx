@@ -3,16 +3,16 @@ import { absoluteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Learn about Nexus Play, a premium browser-games platform.",
+  description: "Learn about Games Play Fantacy, a premium browser-games platform.",
   alternates: { canonical: absoluteUrl("/about") }
 };
 
 export default function AboutPage() {
   return (
     <article className="glass mx-auto max-w-3xl rounded-lg p-6 sm:p-8">
-      <h1 className="text-4xl font-black text-white">About Nexus Play</h1>
+      <h1 className="text-4xl font-black text-white">About Games Play Fantacy</h1>
       <p className="mt-5 leading-7 text-slate-300">
-        Nexus Play is a modern browser-games platform designed for fast discovery, dedicated SEO
+        Games Play Fantacy is a modern browser-games platform designed for fast discovery, dedicated SEO
         pages, responsive gameplay, and lightweight embeds. The experience focuses on clean
         navigation, category browsing, trending picks, and recently played history.
       </p>

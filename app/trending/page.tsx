@@ -5,7 +5,7 @@ import { absoluteUrl, collectionJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Trending Browser Games",
-  description: "Play the most popular browser games trending on Nexus Play.",
+  description: "Play the most popular browser games trending on Games Play Fantacy.",
   alternates: { canonical: absoluteUrl("/trending") }
 };
 

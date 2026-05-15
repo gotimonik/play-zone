@@ -1,7 +1,7 @@
 import type { Game } from "@/lib/games";
 
 export const siteConfig = {
-  name: "Nexus Play",
+  name: "Games Play Fantacy",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://games.playfantacy.com",
   description:
     "Play premium browser games instantly with fast loading, clean categories, trending picks, and dedicated game pages."

@@ -1,4 +1,4 @@
-# Nexus Play
+# Games Play Fantacy
 
 A modern Next.js browser-games platform with iframe-powered game pages, SEO metadata, sitemap,
 robots, PWA assets, search, categories, trending games, related games, and local recently played

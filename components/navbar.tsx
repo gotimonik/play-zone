@@ -28,9 +28,9 @@ export function Navbar() {
       <nav className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2 font-black text-white">
           <span className="grid size-9 place-items-center rounded-lg bg-cyan-300 text-slate-950 shadow-[0_0_30px_rgba(32,231,255,0.35)]">
-            N
+            G
           </span>
-          <span>Nexus Play</span>
+          <span>Games Play Fantacy</span>
         </Link>
         <div className="hidden items-center gap-1 md:flex">
           {navItems.map((item) => (

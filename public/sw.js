@@ -1,4 +1,4 @@
-const CACHE_NAME = "nexus-play-v2";
+const CACHE_NAME = "games-play-fantacy-v2";
 const CORE_ASSETS = ["/", "/manifest.webmanifest", "/icon.svg"];
 
 self.addEventListener("install", (event) => {

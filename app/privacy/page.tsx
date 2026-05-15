@@ -3,7 +3,7 @@ import { absoluteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Privacy Policy for Nexus Play.",
+  description: "Privacy Policy for Games Play Fantacy.",
   alternates: { canonical: absoluteUrl("/privacy") }
 };
 
@@ -12,7 +12,7 @@ export default function PrivacyPage() {
     <article className="glass mx-auto max-w-3xl rounded-lg p-6 sm:p-8">
       <h1 className="text-4xl font-black text-white">Privacy Policy</h1>
       <p className="mt-5 leading-7 text-slate-300">
-        Nexus Play stores recently played game slugs in your browser localStorage to improve your
+        Games Play Fantacy stores recently played game slugs in your browser localStorage to improve your
         experience. If analytics is enabled by the site owner, usage is measured with IP
         anonymization and aggregate reporting.
       </p>

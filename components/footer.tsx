@@ -6,7 +6,7 @@ export function Footer() {
     <footer className="border-t border-white/10 bg-black/20">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1.2fr_2fr] lg:px-8">
         <div>
-          <h2 className="text-xl font-black text-white">Nexus Play</h2>
+          <h2 className="text-xl font-black text-white">Games Play Fantacy</h2>
           <p className="mt-3 max-w-md text-sm text-slate-400">
             A fast, SEO-focused browser-games platform with dedicated game pages, playable embeds,
             and responsive discovery.
