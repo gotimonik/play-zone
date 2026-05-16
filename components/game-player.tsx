@@ -61,7 +61,7 @@ export function GamePlayer({ game }: { game: Game }) {
               fill
               priority
               sizes="(min-width: 1024px) 70vw, 100vw"
-              className="object-cover transition duration-500 group-hover:scale-105"
+              className="object-fill transition duration-500 group-hover:scale-105"
             />
             <span className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/35 to-transparent" />
             <span className="absolute inset-0 grid place-items-center p-6">

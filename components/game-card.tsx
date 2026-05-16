@@ -14,7 +14,7 @@ export function GameCard({ game, priority = false }: { game: Game; priority?: bo
           alt={`${game.title} preview`}
           fill
           sizes="(min-width: 1280px) 20vw, (min-width: 768px) 33vw, 50vw"
-          className="object-cover transition duration-500 group-hover:scale-110"
+          className="object-fill transition duration-500 group-hover:scale-110"
           priority={priority}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/10 to-transparent" />

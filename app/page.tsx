@@ -26,7 +26,7 @@ export default function Home() {
               fill
               priority
               sizes="(min-width: 1024px) 24vw, 38vw"
-              className="object-cover opacity-80"
+              className="object-fill opacity-80"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#08101f] via-transparent to-transparent" />
           </div>
@@ -64,7 +64,7 @@ export default function Home() {
               href={`/games/${game.slug}`}
               className="glass scanline relative min-h-52 overflow-hidden rounded-lg p-5"
             >
-              <Image src={game.thumbnail} alt="" fill sizes="(min-width: 1024px) 30vw, 50vw" className="object-cover opacity-45" />
+              <Image src={game.thumbnail} alt="" fill sizes="(min-width: 1024px) 30vw, 50vw" className="object-fill opacity-45" />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent" />
               <div className="relative z-10 mt-24">
                 <p className="text-xs font-bold uppercase tracking-[0.22em] text-lime-300">

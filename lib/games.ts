@@ -1,12 +1,8 @@
-export type GameCategory =
-  | "Action"
-  | "Adventure"
-  | "Arcade"
-  | "Animal";
-  // | "Racing"
-  // | "Puzzle"
-  // | "Multiplayer"
-  // | "Strategy";
+export type GameCategory = "Action" | "Adventure" | "Arcade" | "Animal" | "Casino";
+// | "Racing"
+// | "Puzzle"
+// | "Multiplayer"
+// | "Strategy";
 
 export type Game = {
   title: string;
@@ -25,7 +21,8 @@ export type Game = {
 type GameSeed = {
   title: string;
   path: string;
-  thumbnail?: string;
+  thumbnail: string;
+  iframe_url: string;
 };
 
 export const categoryPaths: Record<GameCategory, string> = {
@@ -33,6 +30,7 @@ export const categoryPaths: Record<GameCategory, string> = {
   Adventure: "/AdventureGames",
   Animal: "/AnimalGames",
   Arcade: "/ArcadeGames",
+  Casino: "/CasinoGames",
   // Racing: "/RacingGames",
   // Puzzle: "/PuzzleGames",
   // Multiplayer: "/MultiplayerGames",
@@ -41,64 +39,309 @@ export const categoryPaths: Record<GameCategory, string> = {
 
 const gameSeeds: Record<GameCategory, GameSeed[]> = {
   Action: [
-    { title: "Archer Battle", path: "/ArcherBattle", thumbnail: "/images/archer-battle.png" },
-    { title: "Arrows", path: "/Arrows", thumbnail: "/images/arrows.png" },
-    { title: "Chidimar", path: "/Chidimar", thumbnail: "/images/chidimar.png" },
-    { title: "Crazy Cannons", path: "/CrazyCannons", thumbnail: "/images/crazy-cannons.png" },
-    { title: "Deadshot", path: "/Deadshot", thumbnail: "/images/deadshot.png" },
-    { title: "Night Scary", path: "/NightScary", thumbnail: "/images/night-scary.png" },
-    { title: "Ninja Time", path: "/NinjaTime", thumbnail: "/images/ninja-time.png" },
-    { title: "Rocket Defender", path: "/RocketDefender", thumbnail: "/images/rocket-defender.png" },
-    { title: "Space Jet", path: "/SpaceJet", thumbnail: "/images/space-jet.png" },
-    { title: "Swift", path: "/Swift", thumbnail: "/images/swift.png" },
+    {
+      title: "Archer Battle",
+      path: "/ArcherBattle",
+      thumbnail: "/images/archer-battle.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/474299356/index.html",
+    },
+    {
+      title: "Arrows",
+      path: "/Arrows",
+      thumbnail: "/images/arrows.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/458317523/index.html",
+    },
+    {
+      title: "Chidimar",
+      path: "/Chidimar",
+      thumbnail: "/images/chidimar.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/495616575/index.html",
+    },
+    {
+      title: "Crazy Cannons",
+      path: "/CrazyCannons",
+      thumbnail: "/images/crazy-cannons.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/483593235/index.html",
+    },
+    {
+      title: "Deadshot",
+      path: "/Deadshot",
+      thumbnail: "/images/deadshot.png",
+      iframe_url: "https://deadshot.io/",
+    },
+    {
+      title: "Night Scary",
+      path: "/NightScary",
+      thumbnail: "/images/night-scary.png",
+      iframe_url: "https://imaginative-tartufo-3ee4c2.netlify.app/",
+    },
+    {
+      title: "Ninja Time",
+      path: "/NinjaTime",
+      thumbnail: "/images/ninja-time.png",
+      iframe_url: "https://squared0.github.io/Ninja-Time/",
+    },
+    {
+      title: "Rocket Defender",
+      path: "/RocketDefender",
+      thumbnail: "/images/rocket-defender.png",
+      iframe_url: "http://www.sbmgames.com.br/jogos/Rocket_Defende/",
+    },
+    {
+      title: "Space Jet",
+      path: "/SpaceJet",
+      thumbnail: "/images/space-jet.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/493156869/index.html",
+    },
+    {
+      title: "Swift",
+      path: "/Swift",
+      thumbnail: "/images/swift.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/493804914/index.html",
+    },
     {
       title: "Wizard Magic Fire",
       path: "/WizardMagicFire",
       thumbnail: "/images/wizard-magic-fire.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/488370646/index.html",
     },
-    { title: "Wobbly Boxing", path: "/Boxing", thumbnail: "/images/wobbly-boxing.png" },
+    {
+      title: "Wobbly Boxing",
+      path: "/Boxing",
+      thumbnail: "/images/wobbly-boxing.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/438341319/index.html",
+    },
   ],
   Adventure: [
-    { title: "Duo Nether", path: "/DuoNether", thumbnail: "/images/duo-nether.png" },
-    { title: "Line On Hole", path: "/LineOnHole", thumbnail: "/images/line-on-hole.png" },
-    { title: "Maya Ruins", path: "/MayaRuins", thumbnail: "/images/maya-ruins.png" },
-    { title: "Melody’s Adventure", path: "/MelodysAdventure", thumbnail: "/images/melodys-adventure.png" },
-    { title: "Mystic Blocks", path: "/MysticBlocks", thumbnail: "/images/mystic-blocks.png" },
-    { title: "NOEL Navigates", path: "/NoelNavigates", thumbnail: "/images/noel-navigates.png" },
-    { title: "Snowland", path: "/Snowland", thumbnail: "/images/snowland.png" },
-    { title: "Super Bitcoin Boy", path: "/SuperBitcoinBoy", thumbnail: "/images/super-bitcoin-boy.png" },
-    { title: "Treasures Jungle", path: "/TreasuresJungle", thumbnail: "/images/treasures-jungle.png" },
-    { title: "Two Sides", path: "/TwoSides", thumbnail: "/images/two-sides.png" },
+    {
+      title: "Duo Nether",
+      path: "/DuoNether",
+      thumbnail: "/images/duo-nether.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/495372833/index.html",
+    },
+    {
+      title: "Line On Hole",
+      path: "/LineOnHole",
+      thumbnail: "/images/line-on-hole.png",
+      iframe_url: "https://squared0.github.io/LineOfHole/",
+    },
+    {
+      title: "Maya Ruins",
+      path: "/MayaRuins",
+      thumbnail: "/images/maya-ruins.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/473062732/index.html",
+    },
+    {
+      title: "Melody’s Adventure",
+      path: "/MelodysAdventure",
+      thumbnail: "/images/melodys-adventure.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/490378704/index.html",
+    },
+    {
+      title: "Mystic Blocks",
+      path: "/MysticBlocks",
+      thumbnail: "/images/mystic-blocks.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/493212979/index.html",
+    },
+    {
+      title: "NOEL Navigates",
+      path: "/NoelNavigates",
+      thumbnail: "/images/noel-navigates.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/478627992/index.html",
+    },
+    {
+      title: "Snowland",
+      path: "/Snowland",
+      thumbnail: "/images/snowland.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/496303910/index.html",
+    },
+    {
+      title: "Super Bitcoin Boy",
+      path: "/SuperBitcoinBoy",
+      thumbnail: "/images/super-bitcoin-boy.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/495237029/index.html",
+    },
+    {
+      title: "Treasures Jungle",
+      path: "/TreasuresJungle",
+      thumbnail: "/images/treasures-jungle.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/471183880/index.html",
+    },
+    {
+      title: "Two Sides",
+      path: "/TwoSides",
+      thumbnail: "/images/two-sides.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/493053322/index.html",
+    },
   ],
   Animal: [
-    { title: "Click Animals", path: "/ClickAnimals", thumbnail: "/images/click-animals.png" },
-    { title: "Collect Animal", path: "/CollectAnimal", thumbnail: "/images/collect-animal.png" },
-    { title: "Dino Click", path: "/DinoClick", thumbnail: "/images/dino-click.png" },
-    { title: "Doge Blocks", path: "/DogeBlocks", thumbnail: "/images/doge-blocks.png" },
-    { title: "Dogs Puzzle", path: "/DogsPuzzle", thumbnail: "/images/dogs-puzzle.png" },
-    { title: "Find My", path: "/FindMyDog", thumbnail: "/images/find-my-dog.png" },
-    { title: "Fishes", path: "/Fishes", thumbnail: "/images/fishes.png" },
-    { title: "Happy Snake", path: "/HappySnake", thumbnail: "/images/happy-snake.png" },
-    { title: "Kitty Run", path: "/KittyRun", thumbnail: "/images/kitty-run.png" },
-    { title: "Moles", path: "/Moles", thumbnail: "/images/moles.png" },
+    {
+      title: "Click Animals",
+      path: "/ClickAnimals",
+      thumbnail: "/images/click-animals.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/494829810/index.html",
+    },
+    {
+      title: "Collect Animal",
+      path: "/CollectAnimal",
+      thumbnail: "/images/collect-animal.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/446357557/index.html",
+    },
+    {
+      title: "Dino Click",
+      path: "/DinoClick",
+      thumbnail: "/images/dino-click.png",
+      iframe_url: "https://squared0.github.io/Dino-Click/",
+    },
+    {
+      title: "Doge Blocks",
+      path: "/DogeBlocks",
+      thumbnail: "/images/doge-blocks.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/452874886/index.html",
+    },
+    {
+      title: "Dogs Puzzle",
+      path: "/DogsPuzzle",
+      thumbnail: "/images/dogs-puzzle.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/447863966/index.html",
+    },
+    {
+      title: "Find My",
+      path: "/FindMyDog",
+      thumbnail: "/images/find-my-dog.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/449148902/index.html",
+    },
+    {
+      title: "Fishes",
+      path: "/Fishes",
+      thumbnail: "/images/fishes.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/460118711/index.html",
+    },
+    {
+      title: "Happy Snake",
+      path: "/HappySnake",
+      thumbnail: "/images/happy-snake.png",
+      iframe_url: "https://pricklegames.cloud/Games/BigGames/HappySnake2HTML5/index.html",
+    },
+    {
+      title: "Kitty Run",
+      path: "/KittyRun",
+      thumbnail: "/images/kitty-run.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/495003891/index.html",
+    },
+    {
+      title: "Moles",
+      path: "/Moles",
+      thumbnail: "/images/moles.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/460570956/index.html",
+    },
   ],
   Arcade: [
-    { title: "Ball Blast", path: "/BallBlast", thumbnail: "/images/ball-blast.png" },
-    { title: "Candy Dash", path: "/CandyDash", thumbnail: "/images/candy-dash.png" },
-    { title: "Crazy Journey", path: "/CrazyJourney", thumbnail: "/images/crazy-journey.png" },
-    { title: "Crazy Monkey", path: "/CrazyMonkey", thumbnail: "/images/crazy-monkey.png" },
-    { title: "Creepy Flappy", path: "/CreepyFlappy", thumbnail: "/images/creepy-flappy.png" },
-    { title: "Gap", path: "/Gap", thumbnail: "/images/gap.png" },
-    { title: "Pet Crush", path: "/PetCrush", thumbnail: "/images/pet-crush.png" },
-    { title: "Power Off", path: "/PowerOff", thumbnail: "/images/power-off.png" },
-    { title: "Save Ball", path: "/SaveBall", thumbnail: "/images/save-ball.png" },
-    { title: "Slot Astro", path: "/SlotAstro", thumbnail: "/images/slot-astro.png" },
-    { title: "Slot Cowboys", path: "/SlotCowboys", thumbnail: "/images/slot-cowboys.png" },
-    { title: "Slot Fruits", path: "/SlotFruits", thumbnail: "/images/slot-fruits.png" },
-    { title: "Speed Neon", path: "/SpeedNeon", thumbnail: "/images/speed-neon.png" },
-    { title: "Spinning Ball", path: "/SpinningBall", thumbnail: "/images/spinning-ball.png" },
-    { title: "StickBoys Xmas", path: "/StickBoysXmas", thumbnail: "/images/stickboys-xmas.png" },
-    { title: "Stoneman", path: "/Stoneman", thumbnail: "/images/stoneman.png" },
+    {
+      title: "Ball Blast",
+      path: "/BallBlast",
+      thumbnail: "/images/ball-blast.png",
+      iframe_url: "https://thezgame.com/Games/BallBlast/index.html",
+    },
+    {
+      title: "Candy Dash",
+      path: "/CandyDash",
+      thumbnail: "/images/candy-dash.png",
+      iframe_url: "https://candydash.netlify.app/",
+    },
+    {
+      title: "Crazy Journey",
+      path: "/CrazyJourney",
+      thumbnail: "/images/crazy-journey.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/494914770/index.html",
+    },
+    {
+      title: "Crazy Monkey",
+      path: "/CrazyMonkey",
+      thumbnail: "/images/crazy-monkey.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/348452483/index.html",
+    },
+    {
+      title: "Creepy Flappy",
+      path: "/CreepyFlappy",
+      thumbnail: "/images/creepy-flappy.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/348147403/index.html",
+    },
+    {
+      title: "Gap",
+      path: "/Gap",
+      thumbnail: "/images/gap.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/494563789/index.html",
+    },
+    {
+      title: "Pet Crush",
+      path: "/PetCrush",
+      thumbnail: "/images/pet-crush.png",
+      iframe_url: "https://pet-crush.netlify.app/",
+    },
+    {
+      title: "Power Off",
+      path: "/PowerOff",
+      thumbnail: "/images/power-off.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/497636212/index.html",
+    },
+    {
+      title: "Save Ball",
+      path: "/SaveBall",
+      thumbnail: "/images/save-ball.png",
+      iframe_url: "https://thezgame.com/Games/Saveball/index.html",
+    },
+    {
+      title: "Slot Astro",
+      path: "/SlotAstro",
+      thumbnail: "/images/slot-astro.png",
+      iframe_url: "https://showcase.tegagame.com/games/slot-astro/",
+    },
+    {
+      title: "Slot Cowboys",
+      path: "/SlotCowboys",
+      thumbnail: "/images/slot-cowboys.png",
+      iframe_url: "https://showcase.tegagame.com/games/slot-cowboys/",
+    },
+    {
+      title: "Slot Fruits",
+      path: "/SlotFruits",
+      thumbnail: "/images/slot-fruits.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/495285848/index.html",
+    },
+    {
+      title: "Speed Neon",
+      path: "/SpeedNeon",
+      thumbnail: "/images/speed-neon.png",
+      iframe_url: "http://www.sbmgames.com.br/jogos/speedneon/",
+    },
+    {
+      title: "Spinning Ball",
+      path: "/SpinningBall",
+      thumbnail: "/images/spinning-ball.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/482688865/index.html",
+    },
+    {
+      title: "StickBoys Xmas",
+      path: "/StickBoysXmas",
+      thumbnail: "/images/stickboys-xmas.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/497944931/index.html",
+    },
+  ],
+  Casino: [
+    { title: "Cashify", path: "/Cashify", thumbnail: "/images/cashify.png", iframe_url: "https://previews.customer.envatousercontent.com/files/450373694/index.html" },
+    { title: "Four Colors", path: "/FourColors", thumbnail: "/images/four-colors.png", iframe_url: "https://demonisblack.com/code/2024/fourcolors/game/" },
+    { title: "Slot Astro", path: "/SlotAstro", thumbnail: "/images/slot-astro.png", iframe_url: "https://showcase.tegagame.com/games/slot-astro/" },
+    { title: "Slot Cowboys", path: "/SlotCowboys", thumbnail: "/images/slot-cowboys.png", iframe_url: "https://showcase.tegagame.com/games/slot-cowboys/" },
+    { title: "Slot Fruits", path: "/SlotFruits", thumbnail: "/images/slot-fruits.png", iframe_url: "https://previews.customer.envatousercontent.com/files/495285848/index.html" },
+    { title: "Slot Kingdom", path: "/SlotKingdom", thumbnail: "/images/slot-kingdom.png", iframe_url: "https://showcase.tegagame.com/games/slot-kingdom-elf/" },
+    { title: "Slot Kites", path: "/SlotKites", thumbnail: "/images/slot-kites.png", iframe_url: "https://showcase.tegagame.com/games/slot-kites/" },
+    {
+      title: "Slot Shadow Forest",
+      path: "/SlotShadowForest",
+      thumbnail: "/images/slot-shadow-forest.png",
+      iframe_url: "https://showcase.tegagame.com/games/shadow-forest/",
+    },
   ],
   // Racing: [
   //   // { title: "Asphalt Legend", path: "/AsphaltLegend" },
@@ -220,60 +463,7 @@ const gameSeeds: Record<GameCategory, GameSeed[]> = {
   // ],
 };
 
-const extractedIframePaths: Record<string, string> = {
-  "/ArcherBattle": "https://previews.customer.envatousercontent.com/files/474299356/index.html",
-  "/Arrows": "https://previews.customer.envatousercontent.com/files/458317523/index.html",
-  "/Chidimar": "https://previews.customer.envatousercontent.com/files/495616575/index.html",
-  "/CrazyCannons": "https://previews.customer.envatousercontent.com/files/483593235/index.html",
-  "/Deadshot": "https://deadshot.io/",
-  "/NightScary": "https://imaginative-tartufo-3ee4c2.netlify.app/",
-  "/NinjaTime": "https://squared0.github.io/Ninja-Time/",
-  "/RocketDefender": "http://www.sbmgames.com.br/jogos/Rocket_Defende/",
-  "/SpaceJet": "https://previews.customer.envatousercontent.com/files/493156869/index.html",
-  "/Swift": "https://previews.customer.envatousercontent.com/files/493804914/index.html",
-  "/WizardMagicFire": "https://previews.customer.envatousercontent.com/files/488370646/index.html",
-  "/Boxing": "https://previews.customer.envatousercontent.com/files/438341319/index.html",
-  "/DuoNether": "https://previews.customer.envatousercontent.com/files/495372833/index.html",
-  "/LineOnHole": "https://squared0.github.io/LineOfHole/",
-  "/MayaRuins": "https://previews.customer.envatousercontent.com/files/473062732/index.html",
-  "/MelodysAdventure": "https://previews.customer.envatousercontent.com/files/490378704/index.html",
-  "/MysticBlocks": "https://previews.customer.envatousercontent.com/files/493212979/index.html",
-  "/NoelNavigates": "https://previews.customer.envatousercontent.com/files/478627992/index.html",
-  "/Snowland": "https://previews.customer.envatousercontent.com/files/496303910/index.html",
-  "/SuperBitcoinBoy": "https://previews.customer.envatousercontent.com/files/495237029/index.html",
-  "/TreasuresJungle": "https://previews.customer.envatousercontent.com/files/471183880/index.html",
-  "/TwoSides": "https://previews.customer.envatousercontent.com/files/493053322/index.html",
-  "/ClickAnimals": "https://previews.customer.envatousercontent.com/files/494829810/index.html",
-  "/CollectAnimal": "https://previews.customer.envatousercontent.com/files/446357557/index.html",
-  "/DinoClick": "https://squared0.github.io/Dino-Click/",
-  "/DogeBlocks": "https://previews.customer.envatousercontent.com/files/452874886/index.html",
-  "/DogsPuzzle": "https://previews.customer.envatousercontent.com/files/447863966/index.html",
-  "/FindMyDog": "https://previews.customer.envatousercontent.com/files/449148902/index.html",
-  "/Fishes": "https://previews.customer.envatousercontent.com/files/460118711/index.html",
-  "/HappySnake": "https://pricklegames.cloud/Games/BigGames/HappySnake2HTML5/index.html",
-  "/KittyRun": "https://previews.customer.envatousercontent.com/files/495003891/index.html",
-  "/Moles": "https://previews.customer.envatousercontent.com/files/460570956/index.html",
-  "/BallBlast": "https://thezgame.com/Games/BallBlast/index.html",
-  "/CandyDash": "https://candydash.netlify.app/",
-  "/CrazyJourney": "https://previews.customer.envatousercontent.com/files/494914770/index.html",
-  "/CrazyMonkey": "https://previews.customer.envatousercontent.com/files/348452483/index.html",
-  "/CreepyFlappy": "https://previews.customer.envatousercontent.com/files/348147403/index.html",
-  "/Gap": "https://previews.customer.envatousercontent.com/files/494563789/index.html",
-  "/PetCrush": "https://pet-crush.netlify.app/",
-  "/PowerOff": "https://previews.customer.envatousercontent.com/files/497636212/index.html",
-  "/SaveBall": "https://thezgame.com/Games/Saveball/index.html",
-  "/SlotAstro": "https://showcase.tegagame.com/games/slot-astro/",
-  "/SlotCowboys": "https://showcase.tegagame.com/games/slot-cowboys/",
-  "/SlotFruits": "https://previews.customer.envatousercontent.com/files/495285848/index.html",
-  "/SpeedNeon": "http://www.sbmgames.com.br/jogos/speedneon/",
-  "/SpinningBall": "https://previews.customer.envatousercontent.com/files/482688865/index.html",
-  "/StickBoysXmas": "https://previews.customer.envatousercontent.com/files/497944931/index.html",
-};
 
-const iframeUrl = (path: string) => {
-  const iframePath = extractedIframePaths[path];
-  return iframePath ? iframePath : null;
-};
 const categoryTheme: Record<
   GameCategory,
   { from: string; via: string; to: string; accent: string }
@@ -282,6 +472,8 @@ const categoryTheme: Record<
   Adventure: { from: "#052e2b", via: "#0f766e", to: "#84cc16", accent: "#fde68a" },
   Animal: { from: "#1a1a1a", via: "#4d4d4d", to: "#b3b3b3", accent: "#ffcc00" },
   Arcade: { from: "#111827", via: "#7c3aed", to: "#ec4899", accent: "#7dd3fc" },
+  Casino: { from: "#000000", via: "#1a1a1a", to: "#333333", accent: "#ffcc00" },
+  // Racing: { from: "#0f172a", via: "#334155", to: "#f97316", accent: "#fef08a" },
   // Racing: { from: "#0f172a", via: "#334155", to: "#f97316", accent: "#fef08a" },
   // Puzzle: { from: "#172554", via: "#2563eb", to: "#14b8a6", accent: "#f9a8d4" },
   // Multiplayer: { from: "#312e81", via: "#4f46e5", to: "#06b6d4", accent: "#bef264" },
@@ -355,7 +547,7 @@ export const games: Game[] = Object.entries(gameSeeds).flatMap(([category, seeds
     description: descriptionFor(seed.title, category as GameCategory),
     thumbnail: seed.thumbnail || thumbnailFor(seed.title, category as GameCategory),
     category: category as GameCategory,
-    iframe_url: iframeUrl(seed.path),
+    iframe_url: seed.iframe_url || null,
     tags: tagsFor(seed.title, category as GameCategory),
     rating: Number((4.9 - ((index + categoryIndex) % 7) * 0.1).toFixed(1)),
     featured: index < 2,
