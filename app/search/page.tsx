@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { GameGrid } from "@/components/game-grid";
+import { GameGrid } from "@/components/GameGrid";
 import { searchGames } from "@/lib/games";
 import { absoluteUrl } from "@/lib/seo";
 

@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { GameGrid } from "@/components/game-grid";
-import { RecentlyPlayed } from "@/components/recently-played";
-import { SectionHeading } from "@/components/section-heading";
+import { GameGrid } from "@/components/GameGrid";
+import { RecentlyPlayed } from "@/components/RecentlyPlayed";
+import { SectionHeading } from "@/components/SectionHeading";
 import { categories, games, slugify } from "@/lib/games";
 import { collectionJsonLd } from "@/lib/seo";
 

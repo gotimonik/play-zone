@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { GameGrid } from "@/components/game-grid";
+import { GameGrid } from "@/components/GameGrid";
 import type { Game } from "@/lib/games";
 
 export function RecentlyPlayed({ games }: { games: Game[] }) {

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { GameGrid } from "@/components/game-grid";
+import { GameGrid } from "@/components/GameGrid";
 import { games } from "@/lib/games";
 import { absoluteUrl, collectionJsonLd } from "@/lib/seo";
 

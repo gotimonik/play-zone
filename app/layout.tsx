@@ -2,22 +2,24 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Suspense } from "react";
 import "./globals.css";
-import { Footer } from "@/components/footer";
-import { Navbar } from "@/components/navbar";
-import { ProgressBar } from "@/components/progress-bar";
+import { Footer } from "@/components/Footer";
+import { Navbar } from "@/components/Navbar";
+import { ProgressBar } from "@/components/ProgressBar";
 import { absoluteUrl, siteConfig } from "@/lib/seo";
+import { GA_MEASUREMENT_ID } from "@/lib/analytics";
+import { AnalyticsTracker } from "@/components/AnalyticsTracker";
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#060711"
+  themeColor: "#060711",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: `${siteConfig.name} | Premium Browser Games`,
-    template: `%s | ${siteConfig.name}`
+    template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   applicationName: siteConfig.name,
@@ -28,12 +30,12 @@ export const metadata: Metadata = {
     url: absoluteUrl("/"),
     siteName: siteConfig.name,
     title: `${siteConfig.name} | Premium Browser Games`,
-    description: siteConfig.description
+    description: siteConfig.description,
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} | Premium Browser Games`,
-    description: siteConfig.description
+    description: siteConfig.description,
   },
   robots: {
     index: true,
@@ -43,17 +45,32 @@ export const metadata: Metadata = {
       follow: true,
       "max-image-preview": "large",
       "max-snippet": -1,
-      "max-video-preview": -1
-    }
-  }
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const measurementId = process.env.NEXT_PUBLIC_GA_ID;
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning>
+        <Script id="pwa-register" strategy="afterInteractive">
+          {`if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));`}
+        </Script>
+        {GA_MEASUREMENT_ID ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga" strategy="afterInteractive">
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","${GA_MEASUREMENT_ID}",{anonymize_ip:true});`}
+            </Script>
+          </>
+        ) : null}
+        <Suspense fallback={null}>
+          <AnalyticsTracker />
+        </Suspense>
         <Suspense fallback={null}>
           <ProgressBar />
         </Suspense>
@@ -62,20 +79,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           {children}
         </main>
         <Footer />
-        <Script id="pwa-register" strategy="afterInteractive">
-          {`if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));`}
-        </Script>
-        {measurementId ? (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
-              strategy="afterInteractive"
-            />
-            <Script id="ga" strategy="afterInteractive">
-              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","${measurementId}",{anonymize_ip:true});`}
-            </Script>
-          </>
-        ) : null}
       </body>
     </html>
   );

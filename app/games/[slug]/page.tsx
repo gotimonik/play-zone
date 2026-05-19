@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Breadcrumbs } from "@/components/breadcrumbs";
-import { GameGrid } from "@/components/game-grid";
-import { GamePlayer } from "@/components/game-player";
-import { SectionHeading } from "@/components/section-heading";
-import { ShareButtons } from "@/components/share-buttons";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { GameGrid } from "@/components/GameGrid";
+import { GamePlayer } from "@/components/GamePlayer";
+import { SectionHeading } from "@/components/SectionHeading";
+import { ShareButtons } from "@/components/ShareButtons";
 import { categories, games, getGameBySlug, getRelatedGames, slugify } from "@/lib/games";
 import { absoluteUrl, gameJsonLd, siteConfig } from "@/lib/seo";
 

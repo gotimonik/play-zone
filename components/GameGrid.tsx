@@ -1,5 +1,5 @@
 import type { Game } from "@/lib/games";
-import { GameCard } from "@/components/game-card";
+import { GameCard } from "@/components/GameCard";
 
 export function GameGrid({ games, priority = false }: { games: Game[]; priority?: boolean }) {
   return (

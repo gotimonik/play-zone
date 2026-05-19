@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Breadcrumbs } from "@/components/breadcrumbs";
-import { GameGrid } from "@/components/game-grid";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { GameGrid } from "@/components/GameGrid";
 import { categories, getGamesByCategory, slugify } from "@/lib/games";
 import { absoluteUrl, collectionJsonLd } from "@/lib/seo";
 
