@@ -7,7 +7,11 @@ import { absoluteUrl } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Search Games",
   description: "Search free online browser games by title, category, and tags.",
-  alternates: { canonical: absoluteUrl("/search") }
+  alternates: { canonical: absoluteUrl("/search") },
+  robots: {
+    index: false,
+    follow: true
+  }
 };
 
 export default function SearchPage({

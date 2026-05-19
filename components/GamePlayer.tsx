@@ -37,6 +37,9 @@ export function GamePlayer({ game }: { game: Game }) {
         <button
           type="button"
           onClick={openFullscreen}
+          data-ga-click="game_fullscreen_click"
+          data-ga-location="game_player"
+          data-ga-label={game.title}
           className="rounded-full bg-white px-4 py-2 text-sm font-black text-slate-950 transition hover:bg-cyan-200"
         >
           Fullscreen
@@ -47,6 +50,9 @@ export function GamePlayer({ game }: { game: Game }) {
           <button
             type="button"
             disabled={!game.iframe_url}
+            data-ga-click={game.iframe_url ? "game_play_click" : "game_unavailable_click"}
+            data-ga-location="game_player"
+            data-ga-label={game.title}
             onClick={() => {
               if (!game.iframe_url) return;
               setLoaded(false);

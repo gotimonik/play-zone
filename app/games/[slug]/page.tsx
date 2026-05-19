@@ -6,7 +6,7 @@ import { GamePlayer } from "@/components/GamePlayer";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ShareButtons } from "@/components/ShareButtons";
 import { categories, games, getGameBySlug, getRelatedGames, slugify } from "@/lib/games";
-import { absoluteUrl, gameJsonLd, siteConfig } from "@/lib/seo";
+import { absoluteUrl, breadcrumbJsonLd, gameJsonLd, siteConfig } from "@/lib/seo";
 
 export function generateStaticParams() {
   return games.map((game) => ({ slug: game.slug }));
@@ -23,6 +23,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: game.description,
     alternates: { canonical: absoluteUrl(path) },
     keywords: [game.title, game.category, "browser game", "online game", ...game.tags],
+    robots: {
+      index: true,
+      follow: true,
+    },
     openGraph: {
       type: "article",
       url: absoluteUrl(path),
@@ -45,6 +49,10 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
   const game = getGameBySlug(slug);
   if (!game) notFound();
   const related = getRelatedGames(game);
+  const breadcrumbItems = [
+    { label: game.category, href: `/category/${slugify(game.category)}` },
+    { label: game.title, href: `/games/${game.slug}` }
+  ];
 
   return (
     <>
@@ -52,12 +60,11 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(gameJsonLd(game)) }}
       />
-      <Breadcrumbs
-        items={[
-          { label: game.category, href: `/category/${slugify(game.category)}` },
-          { label: game.title }
-        ]}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(breadcrumbItems)) }}
       />
+      <Breadcrumbs items={[{ label: game.category, href: breadcrumbItems[0].href }, { label: game.title }]} />
       <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
         <GamePlayer game={game} />
         <aside className="space-y-4">

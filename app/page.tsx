@@ -4,7 +4,7 @@ import { GameGrid } from "@/components/GameGrid";
 import { RecentlyPlayed } from "@/components/RecentlyPlayed";
 import { SectionHeading } from "@/components/SectionHeading";
 import { categories, games, slugify } from "@/lib/games";
-import { collectionJsonLd } from "@/lib/seo";
+import { collectionJsonLd, itemListJsonLd } from "@/lib/seo";
 
 export default function Home() {
   const featured = games.filter((game) => game.featured);
@@ -16,6 +16,10 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd("Browser games", "/")) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd("Featured browser games", "/", featured)) }}
       />
       <section className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-stretch">
         <div className="glass relative overflow-hidden rounded-lg p-6 sm:p-8 lg:min-h-[440px]">
@@ -44,12 +48,18 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href={`/games/${hero.slug}`}
+                data-ga-click="hero_play_click"
+                data-ga-location="home_hero"
+                data-ga-label={hero.title}
                 className="rounded-full bg-cyan-300 px-6 py-3 text-sm font-black text-slate-950 transition hover:bg-white"
               >
                 Play featured
               </Link>
               <Link
                 href="/trending"
+                data-ga-click="hero_trending_click"
+                data-ga-location="home_hero"
+                data-ga-label="See trending"
                 className="rounded-full border border-white/15 px-6 py-3 text-sm font-black text-white transition hover:border-pink-300"
               >
                 See trending
@@ -62,9 +72,19 @@ export default function Home() {
             <Link
               key={game.slug}
               href={`/games/${game.slug}`}
+              data-ga-click="featured_game_click"
+              data-ga-location="home_featured"
+              data-ga-label={game.title}
               className="glass scanline relative min-h-52 overflow-hidden rounded-lg p-5"
             >
-              <Image src={game.thumbnail} alt="" fill sizes="(min-width: 1024px) 30vw, 50vw" className="object-fill opacity-45" />
+              <Image
+                src={game.thumbnail}
+                alt=""
+                fill
+                loading="eager"
+                sizes="(min-width: 1024px) 30vw, 50vw"
+                className="object-fill opacity-45"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent" />
               <div className="relative z-10 mt-24">
                 <p className="text-xs font-bold uppercase tracking-[0.22em] text-lime-300">
@@ -89,6 +109,9 @@ export default function Home() {
             <Link
               key={category}
               href={`/category/${slugify(category)}`}
+              data-ga-click="category_click"
+              data-ga-location="home_categories"
+              data-ga-label={category}
               className="glass rounded-lg p-4 transition hover:-translate-y-1 hover:border-pink-300/70"
             >
               <p className="text-lg font-black text-white">{category}</p>

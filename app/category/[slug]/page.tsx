@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { GameGrid } from "@/components/GameGrid";
 import { categories, getGamesByCategory, slugify } from "@/lib/games";
-import { absoluteUrl, collectionJsonLd } from "@/lib/seo";
+import { absoluteUrl, breadcrumbJsonLd, collectionJsonLd, itemListJsonLd, siteConfig } from "@/lib/seo";
 
 export function generateStaticParams() {
   return categories.map((category) => ({ slug: slugify(category) }));
@@ -16,7 +16,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${category} Games`,
     description: `Play the best ${category.toLowerCase()} browser games online with fast loading and dedicated game pages.`,
-    alternates: { canonical: absoluteUrl(`/category/${slug}`) }
+    alternates: { canonical: absoluteUrl(`/category/${slug}`) },
+    keywords: [`${category} games`, `${category.toLowerCase()} browser games`, "free online games"],
+    openGraph: {
+      type: "website",
+      url: absoluteUrl(`/category/${slug}`),
+      siteName: siteConfig.name,
+      title: `${category} Games`,
+      description: `Play the best ${category.toLowerCase()} browser games online with fast loading and dedicated game pages.`
+    }
   };
 }
 
@@ -32,6 +40,18 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(collectionJsonLd(`${category} games`, `/category/${slug}`))
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(itemListJsonLd(`${category} games`, `/category/${slug}`, items))
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbJsonLd([{ label: category, href: `/category/${slug}` }]))
         }}
       />
       <Breadcrumbs items={[{ label: category }]} />

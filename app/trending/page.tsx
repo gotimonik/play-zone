@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { GameGrid } from "@/components/GameGrid";
 import { games } from "@/lib/games";
-import { absoluteUrl, collectionJsonLd } from "@/lib/seo";
+import { absoluteUrl, collectionJsonLd, itemListJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Trending Browser Games",
@@ -17,6 +17,12 @@ export default function TrendingPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd("Trending games", "/trending")) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(itemListJsonLd("Trending games", "/trending", trending))
+        }}
       />
       <header className="mb-8">
         <p className="text-xs font-bold uppercase tracking-[0.32em] text-pink-300">Live heat</p>

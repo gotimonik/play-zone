@@ -6,6 +6,9 @@ export function GameCard({ game, priority = false }: { game: Game; priority?: bo
   return (
     <Link
       href={`/games/${game.slug}`}
+      data-ga-click="game_card_click"
+      data-ga-location="game_grid"
+      data-ga-label={game.title}
       className="group scanline glass block overflow-hidden rounded-lg transition duration-300 hover:-translate-y-1 hover:border-cyan-300/60 hover:shadow-[0_24px_80px_rgba(32,231,255,0.16)]"
     >
       <div className="relative aspect-[16/10] overflow-hidden bg-slate-900">

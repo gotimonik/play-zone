@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import { event as trackEvent } from "@/lib/analytics";
 import { categories, slugify } from "@/lib/games";
 
 const navItems = [
@@ -20,7 +21,13 @@ export function Navbar() {
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const value = query.trim();
-    if (value) router.push(`/search?q=${encodeURIComponent(value)}`);
+    if (value) {
+      trackEvent("search_submit", {
+        search_term: value,
+        location: "header",
+      });
+      router.push(`/search?q=${encodeURIComponent(value)}`);
+    }
   }
 
   return (
@@ -60,6 +67,9 @@ export function Navbar() {
         <button
           type="button"
           onClick={() => setOpen((value) => !value)}
+          data-ga-click="menu_toggle"
+          data-ga-location="header"
+          data-ga-label={open ? "Close menu" : "Open menu"}
           className="rounded-lg border border-white/10 p-2 text-sm font-bold text-white md:hidden"
           aria-expanded={open}
         >

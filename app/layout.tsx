@@ -5,7 +5,7 @@ import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { ProgressBar } from "@/components/ProgressBar";
-import { absoluteUrl, siteConfig } from "@/lib/seo";
+import { absoluteUrl, siteConfig, siteJsonLd } from "@/lib/seo";
 import { GA_MEASUREMENT_ID } from "@/lib/analytics";
 import { AnalyticsTracker } from "@/components/AnalyticsTracker";
 
@@ -22,8 +22,13 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  keywords: siteConfig.keywords,
   applicationName: siteConfig.name,
   manifest: "/manifest.webmanifest",
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icon.svg",
+  },
   alternates: { canonical: absoluteUrl("/") },
   openGraph: {
     type: "website",
@@ -54,6 +59,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd()) }}
+        />
         <Script id="pwa-register" strategy="afterInteractive">
           {`if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));`}
         </Script>
@@ -64,7 +73,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               strategy="afterInteractive"
             />
             <Script id="ga" strategy="afterInteractive">
-              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","${GA_MEASUREMENT_ID}",{anonymize_ip:true});`}
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","${GA_MEASUREMENT_ID}",{anonymize_ip:true,send_page_view:false});`}
             </Script>
           </>
         ) : null}
