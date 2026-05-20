@@ -61,7 +61,7 @@ export function Navbar() {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search games..."
-            className="w-full rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-sm text-white outline-none transition placeholder:text-white focus:border-cyan-300"
+            className="w-full rounded-full border border-white/10 bg-white/6 px-4 py-2 text-sm text-white outline-none transition placeholder:text-white focus:border-cyan-300"
           />
         </form>
         <button
@@ -83,7 +83,7 @@ export function Navbar() {
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Search games..."
-              className="w-full rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-sm text-white outline-none"
+              className="w-full rounded-full border border-white/10 bg-white/6 px-4 py-2 text-sm text-white outline-none"
             />
           </form>
           <div className="mt-4 grid grid-cols-2 gap-2">
@@ -93,7 +93,7 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="rounded-lg bg-white/[0.06] px-3 py-2 text-sm font-semibold text-slate-200"
+                  className="rounded-lg bg-white/6 px-3 py-2 text-sm font-semibold text-slate-200"
                 >
                   {item.label}
                 </Link>
