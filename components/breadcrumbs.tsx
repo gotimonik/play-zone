@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function Breadcrumbs({ items }: { items: { label: string; href?: string }[] }) {
   return (
-    <nav aria-label="Breadcrumb" className="mb-6 text-sm text-slate-400">
+    <nav aria-label="Breadcrumb" className="mb-6 text-sm text-white">
       <ol className="flex flex-wrap items-center gap-2">
         <li>
           <Link href="/" className="hover:text-white">

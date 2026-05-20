@@ -25,7 +25,7 @@ export default function TrendingPage() {
         }}
       />
       <header className="mb-8">
-        <p className="text-xs font-bold uppercase tracking-[0.32em] text-pink-300">Live heat</p>
+        <p className="text-xs font-bold uppercase tracking-[0.32em] text-white">Live heat</p>
         <h1 className="mt-3 text-4xl font-black text-white sm:text-6xl">Trending Games</h1>
         <p className="mt-4 max-w-2xl text-slate-300">
           High-rating browser games with quick starts, clean embeds, and strong replay value.

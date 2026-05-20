@@ -18,7 +18,7 @@ export function SectionHeading({
         <h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">{title}</h2>
       </div>
       {href ? (
-        <Link href={href} className="text-sm font-bold text-pink-200 transition hover:text-white">
+        <Link href={href} className="text-sm font-bold text-white">
           View all
         </Link>
       ) : null}

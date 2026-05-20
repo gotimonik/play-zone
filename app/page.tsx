@@ -3,7 +3,7 @@ import Link from "next/link";
 import { GameGrid } from "@/components/GameGrid";
 import { RecentlyPlayed } from "@/components/RecentlyPlayed";
 import { SectionHeading } from "@/components/SectionHeading";
-import { categories, games, slugify } from "@/lib/games";
+import { categories, games, gameSeeds, slugify } from "@/lib/games";
 import { collectionJsonLd, itemListJsonLd } from "@/lib/seo";
 
 export default function Home() {
@@ -19,10 +19,12 @@ export default function Home() {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd("Featured browser games", "/", featured)) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(itemListJsonLd("Featured browser games", "/", featured)),
+        }}
       />
       <section className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-stretch">
-        <div className="glass relative overflow-hidden rounded-lg p-6 sm:p-8 lg:min-h-[440px]">
+        <div className="glass relative overflow-hidden rounded-lg p-6 sm:p-8 lg:min-h-110">
           <div className="absolute inset-y-0 right-0 z-0 hidden sm:block" style={{ width: "38%" }}>
             <Image
               src={hero.thumbnail}
@@ -31,10 +33,11 @@ export default function Home() {
               priority
               sizes="(min-width: 1024px) 24vw, 38vw"
               className="object-fill opacity-80"
+              loading="eager"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#08101f] via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-r from-[#08101f] via-transparent to-transparent" />
           </div>
-          <div className="relative z-20 max-w-[34rem]">
+          <div className="relative z-20 max-w-136">
             <p className="text-xs font-bold uppercase tracking-[0.34em] text-cyan-300">
               Instant browser arena
             </p>
@@ -85,7 +88,7 @@ export default function Home() {
                 sizes="(min-width: 1024px) 30vw, 50vw"
                 className="object-fill opacity-45"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-slate-950 to-transparent" />
               <div className="relative z-10 mt-24">
                 <p className="text-xs font-bold uppercase tracking-[0.22em] text-lime-300">
                   Featured
@@ -104,22 +107,47 @@ export default function Home() {
 
       <section className="mt-12">
         <SectionHeading eyebrow="Browse by mode" title="Categories" />
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
-          {categories.map((category) => (
-            <Link
-              key={category}
-              href={`/category/${slugify(category)}`}
-              data-ga-click="category_click"
-              data-ga-location="home_categories"
-              data-ga-label={category}
-              className="glass rounded-lg p-4 transition hover:-translate-y-1 hover:border-pink-300/70"
-            >
-              <p className="text-lg font-black text-white">{category}</p>
-              <p className="mt-1 text-sm text-slate-400">
-                {games.filter((game) => game.category === category).length} games
-              </p>
-            </Link>
-          ))}
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+          {categories.map((category) => {
+            const games = gameSeeds[category];
+            const hero = games?.[0];
+
+            return (
+              <Link
+                key={category}
+                href={`/category/${slugify(category)}`}
+                data-ga-click="category_click"
+                data-ga-location="home_categories"
+                data-ga-label={category}
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-900 transition-all duration-300 hover:-translate-y-1 hover:border-pink-400/60"
+              >
+                {/* Category Image */}
+                <div className="relative h-44 w-full overflow-hidden">
+                  <Image
+                    src={hero.thumbnail}
+                    alt={category}
+                    fill
+                    priority
+                    sizes="(min-width: 1024px) 24vw, 50vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="eager"
+                  />
+
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent" />
+                </div>
+
+                {/* Content */}
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <h3 className="text-xl font-extrabold text-white drop-shadow-md">{category}</h3>
+
+                  <div className="mt-2 inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-slate-200 backdrop-blur-md">
+                    🎮 {games.length} Games
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </section>
 

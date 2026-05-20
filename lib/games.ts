@@ -1,4 +1,4 @@
-export type GameCategory = "Action" | "Adventure" | "Arcade" | "Animal" | "Casino";
+export type GameCategory = "Action" | "Adventure" | "Arcade" | "Animal" | "Casino" | "Sports";
 // | "Racing"
 // | "Puzzle"
 // | "Multiplayer"
@@ -31,13 +31,14 @@ export const categoryPaths: Record<GameCategory, string> = {
   Animal: "/AnimalGames",
   Arcade: "/ArcadeGames",
   Casino: "/CasinoGames",
+  Sports: "/SportsGames",
   // Racing: "/RacingGames",
   // Puzzle: "/PuzzleGames",
   // Multiplayer: "/MultiplayerGames",
   // Strategy: "/StrategyGames",
 };
 
-const gameSeeds: Record<GameCategory, GameSeed[]> = {
+export const gameSeeds: Record<GameCategory, GameSeed[]> = {
   Action: [
     {
       title: "Archer Battle",
@@ -329,18 +330,61 @@ const gameSeeds: Record<GameCategory, GameSeed[]> = {
     },
   ],
   Casino: [
-    { title: "Cashify", path: "/Cashify", thumbnail: "/images/cashify.png", iframe_url: "https://previews.customer.envatousercontent.com/files/450373694/index.html" },
-    { title: "Four Colors", path: "/FourColors", thumbnail: "/images/four-colors.png", iframe_url: "https://demonisblack.com/code/2024/fourcolors/game/" },
-    { title: "Slot Astro", path: "/SlotAstro", thumbnail: "/images/slot-astro.png", iframe_url: "https://showcase.tegagame.com/games/slot-astro/" },
-    { title: "Slot Cowboys", path: "/SlotCowboys", thumbnail: "/images/slot-cowboys.png", iframe_url: "https://showcase.tegagame.com/games/slot-cowboys/" },
-    { title: "Slot Fruits", path: "/SlotFruits", thumbnail: "/images/slot-fruits.png", iframe_url: "https://previews.customer.envatousercontent.com/files/495285848/index.html" },
-    { title: "Slot Kingdom", path: "/SlotKingdom", thumbnail: "/images/slot-kingdom.png", iframe_url: "https://showcase.tegagame.com/games/slot-kingdom-elf/" },
-    { title: "Slot Kites", path: "/SlotKites", thumbnail: "/images/slot-kites.png", iframe_url: "https://showcase.tegagame.com/games/slot-kites/" },
+    {
+      title: "Cashify",
+      path: "/Cashify",
+      thumbnail: "/images/cashify.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/450373694/index.html",
+    },
+    {
+      title: "Four Colors",
+      path: "/FourColors",
+      thumbnail: "/images/four-colors.png",
+      iframe_url: "https://demonisblack.com/code/2024/fourcolors/game/",
+    },
+    {
+      title: "Slot Astro",
+      path: "/SlotAstro",
+      thumbnail: "/images/slot-astro.png",
+      iframe_url: "https://showcase.tegagame.com/games/slot-astro/",
+    },
+    {
+      title: "Slot Cowboys",
+      path: "/SlotCowboys",
+      thumbnail: "/images/slot-cowboys.png",
+      iframe_url: "https://showcase.tegagame.com/games/slot-cowboys/",
+    },
+    {
+      title: "Slot Fruits",
+      path: "/SlotFruits",
+      thumbnail: "/images/slot-fruits.png",
+      iframe_url: "https://previews.customer.envatousercontent.com/files/495285848/index.html",
+    },
+    {
+      title: "Slot Kingdom",
+      path: "/SlotKingdom",
+      thumbnail: "/images/slot-kingdom.png",
+      iframe_url: "https://showcase.tegagame.com/games/slot-kingdom-elf/",
+    },
+    {
+      title: "Slot Kites",
+      path: "/SlotKites",
+      thumbnail: "/images/slot-kites.png",
+      iframe_url: "https://showcase.tegagame.com/games/slot-kites/",
+    },
     {
       title: "Slot Shadow Forest",
       path: "/SlotShadowForest",
       thumbnail: "/images/slot-shadow-forest.png",
       iframe_url: "https://showcase.tegagame.com/games/shadow-forest/",
+    },
+  ],
+  Sports: [
+    {
+      title: "Cricket Score Counter",
+      path: "/CricketScoreCounter",
+      thumbnail: "/images/cricket-score-counter.png",
+      iframe_url: "https://cricket-score-counter.com",
     },
   ],
   // Racing: [
@@ -463,7 +507,6 @@ const gameSeeds: Record<GameCategory, GameSeed[]> = {
   // ],
 };
 
-
 const categoryTheme: Record<
   GameCategory,
   { from: string; via: string; to: string; accent: string }
@@ -473,6 +516,7 @@ const categoryTheme: Record<
   Animal: { from: "#1a1a1a", via: "#4d4d4d", to: "#b3b3b3", accent: "#ffcc00" },
   Arcade: { from: "#111827", via: "#7c3aed", to: "#ec4899", accent: "#7dd3fc" },
   Casino: { from: "#000000", via: "#1a1a1a", to: "#333333", accent: "#ffcc00" },
+  Sports: { from: "#0f172a", via: "#1e293b", to: "#334155", accent: "#ffcc00" },
   // Racing: { from: "#0f172a", via: "#334155", to: "#f97316", accent: "#fef08a" },
   // Racing: { from: "#0f172a", via: "#334155", to: "#f97316", accent: "#fef08a" },
   // Puzzle: { from: "#172554", via: "#2563eb", to: "#14b8a6", accent: "#f9a8d4" },

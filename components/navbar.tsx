@@ -61,7 +61,7 @@ export function Navbar() {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search games..."
-            className="w-full rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-300"
+            className="w-full rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-sm text-white outline-none transition placeholder:text-white focus:border-cyan-300"
           />
         </form>
         <button

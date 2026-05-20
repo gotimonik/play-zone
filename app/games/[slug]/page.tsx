@@ -74,17 +74,17 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
             <p className="mt-3 text-sm leading-6 text-slate-300">{game.description}</p>
             <dl className="mt-5 grid grid-cols-2 gap-3 text-sm">
               <div>
-                <dt className="text-slate-500">Rating</dt>
+                <dt className="text-white">Rating</dt>
                 <dd className="font-bold text-lime-300">{game.rating.toFixed(1)} / 5</dd>
               </div>
               <div>
-                <dt className="text-slate-500">Category</dt>
+                <dt className="text-white">Category</dt>
                 <dd className="font-bold text-white">{game.category}</dd>
               </div>
             </dl>
             <div className="mt-5 flex flex-wrap gap-2">
               {game.tags.map((tag) => (
-                <span key={tag} className="rounded-full bg-white/[0.06] px-3 py-1 text-xs text-slate-300">
+                <span key={tag} className="rounded-full bg-white/6 px-3 py-1 text-xs text-slate-300">
                   #{tag}
                 </span>
               ))}

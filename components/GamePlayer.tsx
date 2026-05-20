@@ -45,7 +45,7 @@ export function GamePlayer({ game }: { game: Game }) {
           Fullscreen
         </button>
       </div>
-      <div className="relative aspect-[16/10] min-h-[320px] bg-slate-950 md:aspect-video">
+      <div className="relative aspect-16/10 min-h-80 bg-slate-950 md:aspect-video">
         {!started ? (
           <button
             type="button"
@@ -68,8 +68,9 @@ export function GamePlayer({ game }: { game: Game }) {
               priority
               sizes="(min-width: 1024px) 70vw, 100vw"
               className="object-fill transition duration-500 group-hover:scale-105"
+              loading="eager"
             />
-            <span className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/35 to-transparent" />
+            <span className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/35 to-transparent" />
             <span className="absolute inset-0 grid place-items-center p-6">
               <span className="rounded-full bg-cyan-300 px-7 py-3 text-sm font-black text-slate-950 shadow-[0_0_40px_rgba(32,231,255,0.35)] transition group-hover:bg-white group-disabled:bg-slate-300">
                 {game.iframe_url ? "Play Now" : "Game Unavailable"}
