@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-labelledby="title desc">
+  <title id="title">Mind Games</title>
+  <desc id="desc">A memory game with glowing colored sequence pads.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#06111c"/>
+      <stop offset="0.48" stop-color="#1f2937"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+    <radialGradient id="pulse" cx="50%" cy="46%" r="56%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="0" stdDeviation="16" flood-color="#67e8f9" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+  <rect width="640" height="400" rx="30" fill="url(#bg)"/>
+  <rect width="640" height="400" rx="30" fill="url(#pulse)"/>
+  <g transform="translate(182 58)" filter="url(#glow)">
+    <rect x="0" y="0" width="276" height="276" rx="46" fill="#020617" opacity="0.76" stroke="#ffffff" stroke-opacity="0.16"/>
+    <rect x="30" y="30" width="94" height="94" rx="24" fill="#22d3ee"/>
+    <rect x="152" y="30" width="94" height="94" rx="24" fill="#f97316" opacity="0.7"/>
+    <rect x="30" y="152" width="94" height="94" rx="24" fill="#84cc16" opacity="0.7"/>
+    <rect x="152" y="152" width="94" height="94" rx="24" fill="#f43f5e"/>
+    <path d="M77 76 L110 76 M94 59 L94 92" stroke="#06111c" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="199" cy="77" r="19" fill="#06111c"/>
+    <path d="M64 202 L91 175 L118 202" fill="none" stroke="#06111c" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M177 196 C177 178 221 178 221 196 C221 214 177 214 177 232" fill="none" stroke="#06111c" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <text x="40" y="322" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="800" fill="#a5f3fc" letter-spacing="4">MEMORY</text>
+  <text x="40" y="360" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="900" fill="#ffffff">Mind Games</text>
+</svg>

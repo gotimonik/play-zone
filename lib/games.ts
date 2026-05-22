@@ -1,4 +1,4 @@
-export type GameCategory = "Action" | "Adventure" | "Arcade" | "Animal" | "Casino" | "Sports";
+export type GameCategory = "Action" | "Adventure" | "Arcade" | "Animal" | "Casino" | "Sports" | "Puzzle";
 // | "Racing"
 // | "Puzzle"
 // | "Multiplayer"
@@ -23,7 +23,14 @@ type GameSeed = {
   path: string;
   thumbnail: string;
   iframe_url: string;
+  description?: string;
+  tags?: string[];
+  rating?: number;
+  featured?: boolean;
+  trending?: boolean;
 };
+
+type CuratedGameDetails = Required<Pick<GameSeed, "description" | "tags" | "rating" | "featured" | "trending">>;
 
 export const categoryPaths: Record<GameCategory, string> = {
   Action: "/ActionGames",
@@ -32,8 +39,7 @@ export const categoryPaths: Record<GameCategory, string> = {
   Arcade: "/ArcadeGames",
   Casino: "/CasinoGames",
   Sports: "/SportsGames",
-  // Racing: "/RacingGames",
-  // Puzzle: "/PuzzleGames",
+  Puzzle: "/PuzzleGames",
   // Multiplayer: "/MultiplayerGames",
   // Strategy: "/StrategyGames",
 };
@@ -387,6 +393,44 @@ export const gameSeeds: Record<GameCategory, GameSeed[]> = {
       iframe_url: "https://cricket-score-counter.com",
     },
   ],
+  Puzzle: [
+    {
+      title: "Arrow Puzzle: Tap Puzzle Games",
+      path: "/ArrowPuzzleTapPuzzleGames",
+      thumbnail: "/images/arrow-puzzle-tap-puzzle-games.svg",
+      iframe_url: "/local-games/arrow-puzzle-tap-puzzle-games",
+      description:
+        "Clear the board by tapping arrows only when their path to the edge is open. Every move matters as blocked arrows add pressure and later levels expand the grid.",
+      tags: ["puzzle", "arrows", "tap", "logic", "brain"],
+      rating: 4.8,
+      featured: true,
+      trending: true,
+    },
+    {
+      title: "Mind Games",
+      path: "/MindGames",
+      thumbnail: "/images/mind-games.svg",
+      iframe_url: "/local-games/mind-games",
+      description:
+        "Train your memory by watching a random color pattern, then repeating it back in the same order. Each cleared round adds a new random step to the sequence.",
+      tags: ["puzzle", "memory", "pattern", "focus", "brain"],
+      rating: 4.9,
+      featured: true,
+      trending: true,
+    },
+    {
+      title: "Interested Games",
+      path: "/InterestedGames",
+      thumbnail: "/images/interested-games.svg",
+      iframe_url: "/local-games/interested-games",
+      description:
+        "Match the correct tiles to the current interest prompt and build your score. Wrong picks cost points, so scan the choices before you tap.",
+      tags: ["puzzle", "matching", "quiz", "focus", "score"],
+      rating: 4.7,
+      featured: false,
+      trending: true,
+    },
+  ],
   // Racing: [
   //   // { title: "Asphalt Legend", path: "/AsphaltLegend" },
   //   // { title: "ATV Quad Bike Traffic Rider", path: "/ATVQuadBikeTrafficRider" },
@@ -517,9 +561,9 @@ const categoryTheme: Record<
   Arcade: { from: "#111827", via: "#7c3aed", to: "#ec4899", accent: "#7dd3fc" },
   Casino: { from: "#000000", via: "#1a1a1a", to: "#333333", accent: "#ffcc00" },
   Sports: { from: "#0f172a", via: "#1e293b", to: "#334155", accent: "#ffcc00" },
+  Puzzle: { from: "#12312f", via: "#365314", to: "#f59e0b", accent: "#67e8f9" },
   // Racing: { from: "#0f172a", via: "#334155", to: "#f97316", accent: "#fef08a" },
   // Racing: { from: "#0f172a", via: "#334155", to: "#f97316", accent: "#fef08a" },
-  // Puzzle: { from: "#172554", via: "#2563eb", to: "#14b8a6", accent: "#f9a8d4" },
   // Multiplayer: { from: "#312e81", via: "#4f46e5", to: "#06b6d4", accent: "#bef264" },
   // Strategy: { from: "#1f2937", via: "#57534e", to: "#d97706", accent: "#c4b5fd" },
 };
@@ -537,15 +581,466 @@ function descriptionFor(title: string, category: GameCategory) {
 }
 
 function tagsFor(title: string, category: GameCategory) {
-  return [
+  return Array.from(new Set([
     slugify(category),
     ...title
       .split(/\s+/)
       .map((word) => slugify(word))
       .filter((word) => word.length > 2)
       .slice(0, 3),
-  ];
+  ]));
 }
+
+const curatedGameDetails: Record<string, CuratedGameDetails> = {
+  "Archer Battle": {
+    description:
+      "Step into a quick archery duel where timing, aim, and clean shots decide each round. Line up your bow, read the angle, and land hits before your rival takes control.",
+    tags: ["action", "archery", "duel", "aim", "battle"],
+    rating: 4.8,
+    featured: true,
+    trending: true,
+  },
+  Arrows: {
+    description:
+      "Guide your reflexes through a fast arrow challenge built around timing and direction changes. Stay sharp, react quickly, and keep the run alive as the pace climbs.",
+    tags: ["action", "arrows", "reflex", "timing", "skill"],
+    rating: 4.7,
+    featured: true,
+    trending: true,
+  },
+  Chidimar: {
+    description:
+      "Jump into a snappy action game with simple controls and rapid scoring moments. Track your target, move with intent, and chase a cleaner run each attempt.",
+    tags: ["action", "arcade", "target", "quick", "score"],
+    rating: 4.6,
+    featured: false,
+    trending: true,
+  },
+  "Crazy Cannons": {
+    description:
+      "Fire heavy cannon shots, judge the arc, and break through each challenge with careful aim. Every blast rewards better timing and a sharper sense of distance.",
+    tags: ["action", "cannons", "shooting", "physics", "aim"],
+    rating: 4.6,
+    featured: false,
+    trending: true,
+  },
+  Deadshot: {
+    description:
+      "Play a tense shooter focused on precision, movement, and fast reactions. Keep your crosshair steady, control each encounter, and survive the pressure.",
+    tags: ["action", "shooter", "precision", "fps", "combat"],
+    rating: 4.8,
+    featured: false,
+    trending: true,
+  },
+  "Night Scary": {
+    description:
+      "Enter a dark action experience with eerie atmosphere and sudden threats. Move carefully, react fast, and push through the night without losing your nerve.",
+    tags: ["action", "scary", "night", "survival", "horror"],
+    rating: 4.5,
+    featured: false,
+    trending: false,
+  },
+  "Ninja Time": {
+    description:
+      "Dash through a ninja platform challenge where timing is everything. Leap, dodge, and strike with rhythm as each stage asks for sharper control.",
+    tags: ["action", "ninja", "platform", "timing", "dash"],
+    rating: 4.7,
+    featured: false,
+    trending: false,
+  },
+  "Rocket Defender": {
+    description:
+      "Defend your zone from incoming danger with quick launches and smart positioning. Prioritize threats, fire at the right moment, and protect the base.",
+    tags: ["action", "rocket", "defense", "shooting", "survival"],
+    rating: 4.6,
+    featured: false,
+    trending: false,
+  },
+  "Space Jet": {
+    description:
+      "Pilot a jet through space hazards and high-speed action. Keep control in tight lanes, dodge incoming threats, and chase a longer flight.",
+    tags: ["action", "space", "jet", "flight", "dodge"],
+    rating: 4.6,
+    featured: false,
+    trending: false,
+  },
+  Swift: {
+    description:
+      "Take on a speed-first action challenge that rewards clean reactions and confident movement. Stay light, avoid mistakes, and keep the momentum rolling.",
+    tags: ["action", "speed", "reflex", "runner", "skill"],
+    rating: 4.5,
+    featured: false,
+    trending: false,
+  },
+  "Wizard Magic Fire": {
+    description:
+      "Cast fire magic through a fantasy action challenge packed with quick attacks and glowing effects. Time each spell and clear threats before they close in.",
+    tags: ["action", "wizard", "magic", "fire", "fantasy"],
+    rating: 4.7,
+    featured: false,
+    trending: false,
+  },
+  "Wobbly Boxing": {
+    description:
+      "Trade wobbly punches in a playful boxing match where movement is half the fight. Step in, swing well, and use timing to outlast your opponent.",
+    tags: ["action", "boxing", "sports", "duel", "physics"],
+    rating: 4.6,
+    featured: false,
+    trending: false,
+  },
+  "Duo Nether": {
+    description:
+      "Adventure through a nether-style world built for coordinated movement and careful jumps. Navigate hazards, collect progress, and keep both heroes moving.",
+    tags: ["adventure", "duo", "platform", "nether", "coop"],
+    rating: 4.8,
+    featured: true,
+    trending: true,
+  },
+  "Line On Hole": {
+    description:
+      "Solve a clean adventure puzzle by guiding the line toward the right path. Read the route, avoid wrong turns, and finish each board with precision.",
+    tags: ["adventure", "line", "puzzle", "path", "logic"],
+    rating: 4.7,
+    featured: true,
+    trending: true,
+  },
+  "Maya Ruins": {
+    description:
+      "Explore ancient ruins filled with traps, platforms, and hidden routes. Move carefully through each chamber and uncover the path forward.",
+    tags: ["adventure", "maya", "ruins", "platform", "explore"],
+    rating: 4.6,
+    featured: false,
+    trending: true,
+  },
+  "Melody’s Adventure": {
+    description:
+      "Join Melody on a bright platform adventure with collectibles, jumps, and cheerful stage flow. Keep moving, avoid hazards, and reach the finish cleanly.",
+    tags: ["adventure", "melody", "platform", "collect", "journey"],
+    rating: 4.7,
+    featured: false,
+    trending: true,
+  },
+  "Mystic Blocks": {
+    description:
+      "Enter a mystical block challenge where placement and timing shape the route ahead. Think through each move and use the board to your advantage.",
+    tags: ["adventure", "blocks", "mystic", "logic", "puzzle"],
+    rating: 4.6,
+    featured: false,
+    trending: false,
+  },
+  "NOEL Navigates": {
+    description:
+      "Guide Noel through a festive adventure of platforms, timing, and route choices. Keep your jumps tidy and steer through each wintery obstacle.",
+    tags: ["adventure", "noel", "winter", "platform", "navigate"],
+    rating: 4.5,
+    featured: false,
+    trending: false,
+  },
+  Snowland: {
+    description:
+      "Travel across a snowy platform world where slippery timing and careful jumps matter. Navigate icy paths and keep the adventure moving forward.",
+    tags: ["adventure", "snow", "platform", "winter", "journey"],
+    rating: 4.6,
+    featured: false,
+    trending: false,
+  },
+  "Super Bitcoin Boy": {
+    description:
+      "Run through a coin-chasing platform adventure with retro energy and crypto-themed pickups. Jump cleanly, collect rewards, and avoid stage hazards.",
+    tags: ["adventure", "bitcoin", "platform", "coins", "retro"],
+    rating: 4.5,
+    featured: false,
+    trending: false,
+  },
+  "Treasures Jungle": {
+    description:
+      "Search the jungle for treasure while crossing obstacles and hidden paths. Time your moves, collect what you can, and push deeper into the wild.",
+    tags: ["adventure", "jungle", "treasure", "explore", "platform"],
+    rating: 4.6,
+    featured: false,
+    trending: false,
+  },
+  "Two Sides": {
+    description:
+      "Switch your thinking between two sides of a clever adventure layout. Watch both spaces, time each move, and solve the stage with balance.",
+    tags: ["adventure", "two-sides", "puzzle", "switch", "timing"],
+    rating: 4.7,
+    featured: false,
+    trending: false,
+  },
+  "Click Animals": {
+    description:
+      "Tap the right animals quickly in a light, friendly challenge for all ages. Build your score by staying focused and reacting to each target.",
+    tags: ["animal", "click", "tap", "family", "score"],
+    rating: 4.8,
+    featured: true,
+    trending: true,
+  },
+  "Collect Animal": {
+    description:
+      "Gather animals across a simple collection challenge with bright feedback and easy controls. Move smartly, collect more, and improve each run.",
+    tags: ["animal", "collect", "arcade", "family", "score"],
+    rating: 4.7,
+    featured: true,
+    trending: true,
+  },
+  "Dino Click": {
+    description:
+      "Click with your dino companion and build progress through quick taps. It is simple, fast, and made for short score-chasing sessions.",
+    tags: ["animal", "dino", "clicker", "tap", "casual"],
+    rating: 4.6,
+    featured: false,
+    trending: true,
+  },
+  "Doge Blocks": {
+    description:
+      "Solve a cute doge block puzzle by arranging pieces and clearing space. Think ahead, place carefully, and keep the board open.",
+    tags: ["animal", "doge", "blocks", "puzzle", "logic"],
+    rating: 4.7,
+    featured: false,
+    trending: true,
+  },
+  "Dogs Puzzle": {
+    description:
+      "Enjoy a dog-themed puzzle with friendly visuals and satisfying problem solving. Match, move, or arrange the pieces to complete each challenge.",
+    tags: ["animal", "dogs", "puzzle", "cute", "logic"],
+    rating: 4.6,
+    featured: false,
+    trending: false,
+  },
+  "Find My": {
+    description:
+      "Search carefully through a dog-themed scene and spot what is missing. Look for clues, compare details, and find the target before moving on.",
+    tags: ["animal", "find", "dog", "hidden", "search"],
+    rating: 4.5,
+    featured: false,
+    trending: false,
+  },
+  Fishes: {
+    description:
+      "Swim through a fish-filled challenge with simple controls and cheerful pacing. Avoid danger, collect what you need, and keep moving through the water.",
+    tags: ["animal", "fish", "water", "arcade", "dodge"],
+    rating: 4.5,
+    featured: false,
+    trending: false,
+  },
+  "Happy Snake": {
+    description:
+      "Guide a cheerful snake, collect food, and grow without crashing into yourself. Plan turns early and keep the board under control.",
+    tags: ["animal", "snake", "classic", "arcade", "collect"],
+    rating: 4.8,
+    featured: false,
+    trending: false,
+  },
+  "Kitty Run": {
+    description:
+      "Run with a quick kitty through obstacles and pickups. Jump at the right time, avoid hazards, and chase a smooth distance record.",
+    tags: ["animal", "kitty", "run", "runner", "jump"],
+    rating: 4.6,
+    featured: false,
+    trending: false,
+  },
+  Moles: {
+    description:
+      "React fast as moles pop up across the board. Tap the targets, avoid wasted moves, and keep your streak going.",
+    tags: ["animal", "moles", "tap", "reflex", "score"],
+    rating: 4.5,
+    featured: false,
+    trending: false,
+  },
+  "Ball Blast": {
+    description:
+      "Blast falling balls into smaller pieces while dodging the chaos. Upgrade your rhythm, aim upward, and survive longer each run.",
+    tags: ["arcade", "ball", "blast", "shooter", "survival"],
+    rating: 4.8,
+    featured: true,
+    trending: true,
+  },
+  "Candy Dash": {
+    description:
+      "Dash through a colorful candy challenge built for quick reactions and score chasing. Match the pace, avoid mistakes, and keep the sugar rush going.",
+    tags: ["arcade", "candy", "dash", "casual", "score"],
+    rating: 4.7,
+    featured: true,
+    trending: true,
+  },
+  "Crazy Journey": {
+    description:
+      "Take a lively arcade journey packed with movement, hazards, and quick decisions. Keep control through each stretch and push for a better run.",
+    tags: ["arcade", "journey", "runner", "dodge", "score"],
+    rating: 4.6,
+    featured: false,
+    trending: true,
+  },
+  "Crazy Monkey": {
+    description:
+      "Swing into a playful monkey arcade challenge with lively movement and fast scoring. Stay alert, time each action, and keep the fun rolling.",
+    tags: ["arcade", "monkey", "jump", "casual", "score"],
+    rating: 4.6,
+    featured: false,
+    trending: true,
+  },
+  "Creepy Flappy": {
+    description:
+      "Tap through a creepy flappy-style challenge where every gap tests your timing. Stay steady, avoid the edges, and chase a higher score.",
+    tags: ["arcade", "flappy", "creepy", "tap", "timing"],
+    rating: 4.5,
+    featured: false,
+    trending: false,
+  },
+  Gap: {
+    description:
+      "Slip through moving gaps in a clean reflex challenge. Read the spacing, time your move, and stay alive as the pattern tightens.",
+    tags: ["arcade", "gap", "reflex", "timing", "dodge"],
+    rating: 4.5,
+    featured: false,
+    trending: false,
+  },
+  "Pet Crush": {
+    description:
+      "Match colorful pet tiles in a cheerful crush-style puzzle arcade game. Chain smart moves, clear objectives, and keep the board lively.",
+    tags: ["arcade", "pet", "match", "puzzle", "casual"],
+    rating: 4.7,
+    featured: false,
+    trending: false,
+  },
+  "Power Off": {
+    description:
+      "Solve quick arcade challenges by switching power at the right moment. Watch the layout, choose the timing, and clear each stage cleanly.",
+    tags: ["arcade", "power", "switch", "logic", "timing"],
+    rating: 4.5,
+    featured: false,
+    trending: false,
+  },
+  "Save Ball": {
+    description:
+      "Protect the ball through obstacle-filled stages with careful movement and timing. Keep it safe, avoid traps, and finish the run.",
+    tags: ["arcade", "ball", "save", "dodge", "skill"],
+    rating: 4.6,
+    featured: false,
+    trending: false,
+  },
+  "Slot Astro": {
+    description:
+      "Spin a space-themed slot machine with bright symbols and fast rounds. Watch the reels, line up matches, and enjoy a cosmic casino break.",
+    tags: ["casino", "slot", "astro", "reels", "space"],
+    rating: 4.7,
+    featured: true,
+    trending: true,
+  },
+  "Slot Cowboys": {
+    description:
+      "Try a western slot experience filled with cowboy symbols and classic reel action. Spin for matching lines and chase the next payout.",
+    tags: ["casino", "slot", "cowboy", "western", "reels"],
+    rating: 4.6,
+    featured: true,
+    trending: true,
+  },
+  "Slot Fruits": {
+    description:
+      "Play a fruit slot with familiar symbols, quick spins, and simple casino pacing. Line up fruit combinations and keep the reels moving.",
+    tags: ["casino", "slot", "fruits", "reels", "classic"],
+    rating: 4.6,
+    featured: false,
+    trending: true,
+  },
+  "Speed Neon": {
+    description:
+      "Race through a neon speed challenge where reaction time and clean steering matter. Avoid traffic, hold your line, and chase distance.",
+    tags: ["arcade", "speed", "neon", "racing", "dodge"],
+    rating: 4.7,
+    featured: false,
+    trending: false,
+  },
+  "Spinning Ball": {
+    description:
+      "Control a spinning ball through a compact arcade test of timing and balance. Keep it moving, avoid bad angles, and clear each challenge.",
+    tags: ["arcade", "ball", "spin", "timing", "skill"],
+    rating: 4.5,
+    featured: false,
+    trending: false,
+  },
+  "StickBoys Xmas": {
+    description:
+      "Help the StickBoys through a festive Christmas adventure with platform timing and teamwork energy. Move carefully and reach the goal.",
+    tags: ["arcade", "xmas", "stickboys", "platform", "winter"],
+    rating: 4.6,
+    featured: false,
+    trending: false,
+  },
+  Cashify: {
+    description:
+      "Play a quick casino-style cash game with simple rounds and satisfying payout feedback. Make each spin count and watch the rewards stack.",
+    tags: ["casino", "cash", "spin", "rewards", "casual"],
+    rating: 4.6,
+    featured: false,
+    trending: true,
+  },
+  "Four Colors": {
+    description:
+      "Play a fast card game built around colors, matching, and smart hand management. Match the top card, use action cards wisely, and empty your hand first.",
+    tags: ["casino", "cards", "colors", "strategy", "multiplayer"],
+    rating: 4.8,
+    featured: true,
+    trending: true,
+  },
+  "Slot Kingdom": {
+    description:
+      "Spin through a fantasy kingdom slot with royal symbols and polished reel action. Chase combinations and enjoy a bright casino session.",
+    tags: ["casino", "slot", "kingdom", "fantasy", "reels"],
+    rating: 4.7,
+    featured: false,
+    trending: true,
+  },
+  "Slot Kites": {
+    description:
+      "Try a colorful kite-themed slot game with breezy visuals and quick spins. Line up symbols and keep the reels floating.",
+    tags: ["casino", "slot", "kites", "reels", "casual"],
+    rating: 4.5,
+    featured: false,
+    trending: false,
+  },
+  "Slot Shadow Forest": {
+    description:
+      "Enter a shadowy forest slot with moody symbols and atmospheric reel play. Spin for matching lines and unlock a darker casino vibe.",
+    tags: ["casino", "slot", "forest", "shadow", "reels"],
+    rating: 4.6,
+    featured: false,
+    trending: false,
+  },
+  "Cricket Score Counter": {
+    description:
+      "Track cricket runs, wickets, and match flow with a focused score counter. It is a handy sports tool for casual play, practice, and local games.",
+    tags: ["sports", "cricket", "score", "counter", "match"],
+    rating: 4.8,
+    featured: true,
+    trending: true,
+  },
+  "Arrow Puzzle: Tap Puzzle Games": {
+    description:
+      "Clear the board by tapping arrows only when their path to the edge is open. Every move matters as blocked arrows add pressure and later levels expand the grid.",
+    tags: ["puzzle", "arrows", "tap", "logic", "brain"],
+    rating: 4.8,
+    featured: true,
+    trending: true,
+  },
+  "Mind Games": {
+    description:
+      "Train your memory by watching a random color pattern, then repeating it back in the same order. Each cleared round adds a new random step to the sequence.",
+    tags: ["puzzle", "memory", "pattern", "focus", "brain"],
+    rating: 4.9,
+    featured: true,
+    trending: true,
+  },
+  "Interested Games": {
+    description:
+      "Match the correct tiles to the current interest prompt and build your score. Wrong picks cost points, so scan the choices before you tap.",
+    tags: ["puzzle", "matching", "quiz", "focus", "score"],
+    rating: 4.7,
+    featured: false,
+    trending: true,
+  },
+};
 
 function thumbnailFor(title: string, category: GameCategory) {
   const theme = categoryTheme[category];
@@ -584,19 +1079,24 @@ function thumbnailFor(title: string, category: GameCategory) {
 }
 
 export const games: Game[] = Object.entries(gameSeeds).flatMap(([category, seeds], categoryIndex) =>
-  seeds.map((seed, index) => ({
-    title: seed.title,
-    slug: slugify(seed.title),
-    sourcePath: seed.path,
-    description: descriptionFor(seed.title, category as GameCategory),
-    thumbnail: seed.thumbnail || thumbnailFor(seed.title, category as GameCategory),
-    category: category as GameCategory,
-    iframe_url: seed.iframe_url || null,
-    tags: tagsFor(seed.title, category as GameCategory),
-    rating: Number((4.9 - ((index + categoryIndex) % 7) * 0.1).toFixed(1)),
-    featured: index < 2,
-    trending: index < 4,
-  })),
+  seeds.map((seed, index) => {
+    const details = curatedGameDetails[seed.title];
+
+    return {
+      title: seed.title,
+      slug: slugify(seed.title),
+      sourcePath: seed.path,
+      description: seed.description || details?.description || descriptionFor(seed.title, category as GameCategory),
+      thumbnail: seed.thumbnail || thumbnailFor(seed.title, category as GameCategory),
+      category: category as GameCategory,
+      iframe_url: seed.iframe_url || null,
+      tags: seed.tags || details?.tags || tagsFor(seed.title, category as GameCategory),
+      rating:
+        seed.rating ?? details?.rating ?? Number((4.9 - ((index + categoryIndex) % 7) * 0.1).toFixed(1)),
+      featured: seed.featured ?? details?.featured ?? index < 2,
+      trending: seed.trending ?? details?.trending ?? index < 4,
+    };
+  }),
 );
 
 export const categories = Object.keys(gameSeeds) as GameCategory[];

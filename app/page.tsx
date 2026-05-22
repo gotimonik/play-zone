@@ -3,7 +3,7 @@ import Link from "next/link";
 import { GameGrid } from "@/components/GameGrid";
 import { RecentlyPlayed } from "@/components/RecentlyPlayed";
 import { SectionHeading } from "@/components/SectionHeading";
-import { categories, games, gameSeeds, slugify } from "@/lib/games";
+import { categories, games, slugify } from "@/lib/games";
 import { collectionJsonLd, itemListJsonLd } from "@/lib/seo";
 
 export default function Home() {
@@ -109,8 +109,8 @@ export default function Home() {
         <SectionHeading eyebrow="Browse by mode" title="Categories" />
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
           {categories.map((category) => {
-            const games = gameSeeds[category];
-            const hero = games?.[0];
+            const categoryGames = games.filter((game) => game.category === category);
+            const hero = categoryGames[0];
 
             return (
               <Link
@@ -142,7 +142,7 @@ export default function Home() {
                   <h3 className="text-xl font-extrabold text-white drop-shadow-md">{category}</h3>
 
                   <div className="mt-2 inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-slate-200 backdrop-blur-md">
-                    🎮 {games.length} Games
+                    🎮 {categoryGames.length} Games
                   </div>
                 </div>
               </Link>

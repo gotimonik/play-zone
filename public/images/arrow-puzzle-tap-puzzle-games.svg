@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-labelledby="title desc">
+  <title id="title">Arrow Puzzle: Tap Puzzle Games</title>
+  <desc id="desc">A bright arrow puzzle board with cyan directional tiles.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07111f"/>
+      <stop offset="0.56" stop-color="#12312f"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="70%" cy="18%" r="58%">
+      <stop offset="0" stop-color="#67e8f9" stop-opacity="0.88"/>
+      <stop offset="1" stop-color="#67e8f9" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#020617" flood-opacity="0.38"/>
+    </filter>
+  </defs>
+  <rect width="640" height="400" rx="30" fill="url(#bg)"/>
+  <rect width="640" height="400" rx="30" fill="url(#glow)"/>
+  <path d="M0 290 C120 240 198 342 330 288 C462 232 518 302 640 252 L640 400 L0 400 Z" fill="#020617" opacity="0.45"/>
+  <g transform="translate(170 64)" filter="url(#shadow)">
+    <rect x="0" y="0" width="300" height="240" rx="28" fill="#020817" opacity="0.86" stroke="#ffffff" stroke-opacity="0.14"/>
+    <g fill="#16d9e8" stroke="#a5f3fc" stroke-opacity="0.7" stroke-width="3">
+      <rect x="28" y="28" width="72" height="72" rx="14"/>
+      <rect x="114" y="28" width="72" height="72" rx="14" opacity="0.2"/>
+      <rect x="200" y="28" width="72" height="72" rx="14"/>
+      <rect x="28" y="114" width="72" height="72" rx="14"/>
+      <rect x="114" y="114" width="72" height="72" rx="14"/>
+      <rect x="200" y="114" width="72" height="72" rx="14" opacity="0.2"/>
+    </g>
+    <g font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="900" text-anchor="middle" fill="#06111c">
+      <text x="64" y="82">←</text>
+      <text x="236" y="82">↑</text>
+      <text x="64" y="168">↓</text>
+      <text x="150" y="168">→</text>
+    </g>
+  </g>
+  <text x="40" y="322" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="800" fill="#67e8f9" letter-spacing="4">PUZZLE</text>
+  <text x="40" y="360" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="900" fill="#ffffff">Arrow Puzzle</text>
+</svg>
